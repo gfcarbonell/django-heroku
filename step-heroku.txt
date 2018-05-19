@@ -1,0 +1,29 @@
+1.- Create Runtime
+2.- Procfile
+3.- Create Folder Static
+4.- Config Setting
+4.1.- 
+    Debug = False
+4.2.- 
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+5.- Config Wsgi
+5.1.-
+    from whitenoise.django import DjangoWhiteNoise
+    application = DjangoWhiteNoise(application)
+6.1.- Create requirements.txt
+certifi==2018.4.16
+chardet==3.0.4
+dj-database-url==0.5.0
+dj-static==0.0.6
+Django==2.0.5
+django-toolbelt==0.0.1
+gunicorn==19.8.1
+heroku==0.1.4
+idna==2.6
+psycopg2==2.7.4
+python-dateutil==1.5
+pytz==2018.4
+requests==2.18.4
+static3==0.7.0
+urllib3==1.22
+whitenoise==3.3.1

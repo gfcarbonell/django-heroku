@@ -11,10 +11,10 @@ from django.core.validators import MinLengthValidator
 # Create your models here.
 class EntityActivity(models.Model):
     '''
-        This Class: EntityActivity is for to identify the activity that an entity belongs.
-        Esta Clase: TipoActividad es para identificar la actividad que pertenece una entidad.
+        This Class: <EntityActivity> is for to identify the activity that an entity belongs.
+        Esta Clase: <EntidadActividad> es para identificar la actividad que pertenece una entidad.
 
-        Attributes - Attributos (Example)
+        For example:
             Textile | Textil
             Telecommunication | Telecomunicación 
     '''
@@ -58,5 +58,6 @@ class EntityActivity(models.Model):
 
     class Meta:
         db_table = 'entity_activities'
+        ordering = ['name']
         verbose_name = 'Entity Activity'
         verbose_name_plural = 'Entity Activities'

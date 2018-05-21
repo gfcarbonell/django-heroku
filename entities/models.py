@@ -15,26 +15,32 @@ from entity_types.models import EntityType
 
 # Create your models here.
 class Entity(models.Model):
-    
+    '''   
+        This Class: <Entity> is to register every entity.
+        Esta Clase: <Entidad> es para registrar toda entidad.
+    '''
     entity_class = models.ForeignKey(
         EntityClass,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True
+        blank=True, 
+        help_text= 'Entity class | Clase de la entidad'
     )
 
     entity_type = models.ForeignKey(
         EntityType,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True
+        blank=True, 
+        help_text= 'Entity type | Tipo de la entidad'
     )
 
     entity_activity = models.ForeignKey(
         EntityActivity, 
         on_delete=models.SET_NULL,
         null=True,
-        blank=True
+        blank=True, 
+        help_text= 'Entity activity | Actividad de la entidad'
     )
     
     name = models.CharField(
@@ -44,7 +50,8 @@ class Entity(models.Model):
         validators=[
             MinLengthValidator(1),
             MaxLengthValidator(100),
-        ]
+        ], 
+        help_text= 'Name | Nombre'
     )
 
     slogan = models.CharField(
@@ -56,7 +63,8 @@ class Entity(models.Model):
         validators=[
             MinLengthValidator(1),
             MaxLengthValidator(100),
-        ]
+        ], 
+        help_text= 'Slogan | Slogan'
     )
 
     initials = models.CharField(
@@ -68,14 +76,16 @@ class Entity(models.Model):
         validators=[
             MinLengthValidator(1),
             MaxLengthValidator(20),
-        ]
+        ], 
+        help_text= 'Initials | Iniciales'
     )
 
     logo = models.ImageField(
         upload_to='image/entities/', 
         null=True, 
         blank=True,
-        default=None
+        default=None, 
+        help_text= 'Logo | logo'
     )
 
     slug = models.SlugField(
@@ -105,5 +115,6 @@ class Entity(models.Model):
         
     class Meta:
         db_table = 'entities'
+        ordering = ['entity_class', 'entity_type', 'entity_activity', 'name']
         verbose_name = 'Entity'
         verbose_name_plural = 'Entities'

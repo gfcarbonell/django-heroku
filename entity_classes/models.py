@@ -13,10 +13,10 @@ from .enums import EntityScope
 # Create your models here.
 class EntityClass(models.Model):
     '''
-        This Class: EntityClass is for to identify the class that an entity belongs.
-        Esta Clase: ClaseEntidad es para identificar la clase que pertenece una entidad.
+        This Class: <EntityClass> is for to identify the class that an entity belongs.
+        Esta Clase: <ClaseEntidad> es para identificar la clase que pertenece una entidad.
 
-        Attributes - Atributos
+        For example:
             Economic Activity | Actividad Econónica
                 >Primary Sector | Sector Primario
                 >Secondary Sector | Sector Secundario 

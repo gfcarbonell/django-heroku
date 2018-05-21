@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o1!^+8%@4ntfze2g7q5-=k@^0srx6mee^0u#5(zn+6^wc*068w'
 
 # SECURITY WARNING: don't run with debug turned on in production (True)!
-DEBUG = False 
+DEBUG = True 
 
 ALLOWED_HOSTS = ['*']
 
@@ -42,7 +42,9 @@ INSTALLED_SYSTEM_APPS = [
     #User Structure
     'auth_users.apps.AuthUsersConfig',
     'auth_user_profiles.apps.AuthUserProfilesConfig',
-    #Persom Structure
+    #Emplooye Structure 
+    'employees.apps.EmployeesConfig',
+    #Person Structure
     'persons.apps.PersonsConfig',
     'contact_information.apps.ContactInformationConfig',
     'extra_information.apps.ExtraInformationConfig',
@@ -55,6 +57,7 @@ INSTALLED_SYSTEM_APPS = [
 
 INSTALLED_SYSTEM_THIRD = [
     'rest_framework',
+    'rest_framework.authtoken',
     'phonenumber_field',
 ]
 
@@ -71,12 +74,28 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_RENDERER_CLASSES':(
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSES_CLASSES':(
+        'rest_framework.parsers.JSONParses',
+    )
+}
+
 ROOT_URLCONF = 'erp.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

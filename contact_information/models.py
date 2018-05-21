@@ -3,26 +3,30 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.template.defaultfilters import slugify
 
 
 # Create your models here.
 class ContactInformation(models.Model):
-   
+    '''
+        This class:<ContactInformation> contains the contact information of a person or entity.
+        Esta class:<AuthUsuario> contiene la información contacto de una persona o entidad.
+    '''
     email = models.EmailField(
         unique=True,
         db_index=True,
+        help_text='Email | Correo electrónico'
     )
-
     cell_phone = PhoneNumberField(
         unique=True,
         db_index=True,
+        help_text='Cell phone | Celular'
     )
-
     telephone = PhoneNumberField(
         unique=True,
         db_index=True,
+        help_text='Telephone | Teléfono'
     )
-    
     slug = models.SlugField(
         editable=False, 
         max_length=255,
@@ -67,5 +71,6 @@ class ContactInformation(models.Model):
 
     class Meta:
         db_table = 'contact_information'
+        ordering = ['email', 'cell_phone', 'telephone']
         verbose_name = 'Contact Information'
         verbose_name_plural = 'Contact Information'

@@ -45,14 +45,17 @@ class UserManager(BaseUserManager):
 
 
 class AuthUser(AbstractBaseUser, PermissionsMixin):
-
+    '''
+        This class:<AuthUser> contains the user information.
+        Esta class:<AuthUsuario> contiene la información de usuario.
+    '''
     username = models.CharField(
         max_length=100,
         unique=True,
         db_index=True,
         validators=[
             MinLengthValidator(2),
-            MaxLengthValidator(50),
+            MaxLengthValidator(100),
         ]
     )
 
@@ -63,7 +66,7 @@ class AuthUser(AbstractBaseUser, PermissionsMixin):
         validators=[
             EmailValidator(),
             MinLengthValidator(3),
-            MaxLengthValidator(50),
+            MaxLengthValidator(100),
         ]
     )
     

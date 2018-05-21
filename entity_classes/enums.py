@@ -5,8 +5,8 @@ from enum import Enum, unique
 @unique
 class EntityScope(Enum):
     ''' 
-        This Enumeration: EntityScope is for to identify the category or scope of an entity.
-        Esta Enumeración: AmbitoEntidad es para identificar la categoría, ámbito o alcanze de una entidad.
+        This Enumeration: <EntityScope> is for to identify the category or scope of an entity.
+        Esta Enumeración: <AmbitoEntidad> es para identificar la categoría, ámbito o alcanze de una entidad.
         
         Attributes - Atributos
             >Economic Activity | Actividad Econónica

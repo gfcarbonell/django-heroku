@@ -5,17 +5,18 @@ from django.db import models
 
 # Create your models here.
 class ExtraInformation(models.Model):
-   
+    '''
+        This Class: <ExtraInformation> contains the extra information of a person or entity
+        Esta clase: <InformacionExtra> contiene la información extra de una persona o entidad
+    '''
     description = models.TextField(
         null=True,
         blank=True
     )
-
     observation = models.TextField(
         null=True,
         blank=True
     )
-
     slug = models.SlugField(
         editable=False, 
         max_length=255,
@@ -56,5 +57,6 @@ class ExtraInformation(models.Model):
 
     class Meta:
         db_table = 'extra_info'
+        ordering = ['description', 'observation']
         verbose_name = 'Extra Information'
         verbose_name_plural = 'Extra Information'

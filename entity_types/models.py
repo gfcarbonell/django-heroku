@@ -11,10 +11,10 @@ from django.core.validators import MinLengthValidator
 # Create your models here.
 class EntityType(models.Model):
     '''
-        This Class: EntityType is for to identify the type that an entity belongs.
-        Esta Clase: TipoEntidad es para identificar el tipo que pertenece una entidad.
+        This Class: <EntityType> is for to identify the type that an entity belongs.
+        Esta Clase: <TipoEntidad> es para identificar el tipo que pertenece una entidad.
 
-        Attributes - Attributes
+        For example:
             Individual Company of Limited Liability I.C.L.L. | Empresa Individual de Responsabilidad Limitada - E.I.R.L.
             Unipersonal Company U.C. | Empresa Unipersonal - E.U.
             Anonymous Society A.S. | Sociedad Anónima - S.A.
@@ -77,5 +77,6 @@ class EntityType(models.Model):
 
     class Meta:
         db_table = 'entity_types'
+        ordering = ['name', 'initials']
         verbose_name = 'Entity Type'
         verbose_name_plural = 'Entity Types'

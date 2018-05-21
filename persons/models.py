@@ -12,6 +12,13 @@ from django.core.validators import MinLengthValidator
 
 # Create your models here.
 class Person(models.Model):
+    '''
+        This Class:<Person> is abstract and contains basic personal information.
+        Esta Clase:<Persona> es abstracto y contiene la información personal básica.
+    '''
+    CHOICES_GENDER = [(gender.value, gender.value) for gender in Gender]
+    CHOICES_MARITAL_STATUS = [(marital_status.value, marital_status.value) for marital_status in MaritalStatus]
+    CHOICES_BLOOD_GROUP = [(blood_group.value, blood_group.value) for blood_group in BloodGroup]
     
     name = models.CharField(
         max_length=100,
@@ -20,7 +27,8 @@ class Person(models.Model):
         validators=[
             MinLengthValidator(1),
             MaxLengthValidator(100),
-        ]
+        ],
+        help_text='Name | Nombre'
     )
     last_name = models.CharField(
         max_length=100,
@@ -29,7 +37,8 @@ class Person(models.Model):
         validators=[
             MinLengthValidator(1),
             MaxLengthValidator(100),
-        ]
+        ],
+        help_text='Last name | Apellido paterno'
     )
     mother_last_name = models.CharField(
         max_length=100,
@@ -38,22 +47,36 @@ class Person(models.Model):
         validators=[
             MinLengthValidator(1),
             MaxLengthValidator(100),
-        ]
+        ], 
+        help_text='Mother last name | Apellido materno'
     )   
     birthday = models.DateField(
+        help_text='birthday | Fecha nacimiento'
     )
     gender = models.CharField(
-        choices = [(gender, gender.value) for gender in Gender],
-        max_length=6,
+        choices = CHOICES_GENDER,
+        max_length=9,
+        help_text='Gender | Género'
     )
     marital_status = models.CharField(
-        choices = [(marital_status, marital_status.value) for marital_status in MaritalStatus],
+        choices = CHOICES_MARITAL_STATUS,
         max_length=9,
+        help_text='Marital status | Estado marital o civil'
     )
     blood_group = models.CharField(
-        choices = [(blood_group, blood_group.value) for blood_group in BloodGroup],
+        choices = CHOICES_BLOOD_GROUP,
         max_length=9,
-    )   
+        null=True,
+        blank=True,
+        help_text='Blood group | Grupo sanguíneo'
+    )  
+    photography = models.ImageField(
+        upload_to='image/persons/', 
+        null=True, 
+        blank=True,
+        default=None, 
+        help_text='Photography | Fotografía'
+    ) 
     slug = models.SlugField(
         editable=False, 
         max_length=255,
@@ -66,9 +89,9 @@ class Person(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.slug = slugify(self.get_full_name)
+            self.slug = slugify(self.get_full_name())
         else:
-            slug = slugify(self.get_full_name)
+            slug = slugify(self.get_full_name())
             if self.slug != slug:
                 self.slug = slug
         super(Person, self).save(*args, **kwargs)

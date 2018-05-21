@@ -6,22 +6,22 @@ from enum import Enum, unique
 @unique
 class PersonType(Enum):
     NATURAL = 'Natural'
-    LEGAL = 'Legal'
+    LEGAL = 'Jurídica'
 
 
 @unique
 class Gender(Enum):
-    MALE = 'Male'
-    FEMALE = 'Female'
-
+    MALE = 'Masculino'
+    FEMALE = 'Femenino'
+    OTHERS = 'Otros'
 
 @unique
 class MaritalStatus(Enum):
-    SINGLE = 'Single'
-    MARRIED = 'Legal'
-    DIVORCED = 'Divorced'
-    SEPARATED = 'Separated'
-    WIDOWER = 'Widower'
+    SINGLE = 'Soltero'
+    MARRIED = 'Casado'
+    DIVORCED = 'Divorciado'
+    SEPARATED = 'Separado'
+    WIDOWER = 'Viudo'
 
 @unique
 class BloodGroup(Enum):

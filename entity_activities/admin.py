@@ -6,7 +6,7 @@ from .models import EntityActivity
 
 @admin.register(EntityActivity)
 class EntityActivityAdmin(admin.ModelAdmin):
-	list_display = ('name',)
+	list_display = ['name',]
 	search_fields  = ['name', 'id']
 	fieldsets = (
         ('Entity Activity', {'fields':('name',)}),

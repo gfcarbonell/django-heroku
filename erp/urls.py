@@ -22,8 +22,8 @@ from auth_users.views import AuthUserViewSet, GroupViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'users', AuthUserViewSet)
-router.register(r'group', GroupViewSet)
+router.register(r'users', AuthUserViewSet, base_name='user')
+router.register(r'group', GroupViewSet, base_name='group')
 
 
 urlpatterns = [

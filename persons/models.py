@@ -16,9 +16,9 @@ class Person(models.Model):
         This Class:<Person> is abstract and contains basic personal information.
         Esta Clase:<Persona> es abstracto y contiene la información personal básica.
     '''
-    CHOICES_GENDER = [(gender.value, gender.value) for gender in Gender]
-    CHOICES_MARITAL_STATUS = [(marital_status.value, marital_status.value) for marital_status in MaritalStatus]
-    CHOICES_BLOOD_GROUP = [(blood_group.value, blood_group.value) for blood_group in BloodGroup]
+    GENDER_CHOICES = [(gender.value, gender.value) for gender in Gender]
+    MARITAL_STATUS_CHOICES = [(marital_status.value, marital_status.value) for marital_status in MaritalStatus]
+    GROUP_CHOICES_BLOOD = [(blood_group.value, blood_group.value) for blood_group in BloodGroup]
     
     name = models.CharField(
         max_length=100,
@@ -54,17 +54,17 @@ class Person(models.Model):
         help_text='birthday | Fecha nacimiento'
     )
     gender = models.CharField(
-        choices = CHOICES_GENDER,
+        choices = GENDER_CHOICES,
         max_length=9,
         help_text='Gender | Género'
     )
     marital_status = models.CharField(
-        choices = CHOICES_MARITAL_STATUS,
+        choices = MARITAL_STATUS_CHOICES,
         max_length=9,
         help_text='Marital status | Estado marital o civil'
     )
     blood_group = models.CharField(
-        choices = CHOICES_BLOOD_GROUP,
+        choices = GROUP_CHOICES_BLOOD,
         max_length=9,
         null=True,
         blank=True,

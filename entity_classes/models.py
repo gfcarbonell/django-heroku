@@ -40,10 +40,10 @@ class EntityClass(models.Model):
                 >Mixed Company | Empresa Mixta
                 >Self-management company | Empresa de Autogestión
     '''
-    CHOICES_ENTITY_SCOPE = [(entity_scope.value, entity_scope.value) for entity_scope in EntityScope]
+    ENTITY_SCOPE_CHOICES = [(entity_scope.value, entity_scope.value) for entity_scope in EntityScope]
     
     entity_scope = models.CharField(
-        choices = CHOICES_ENTITY_SCOPE,
+        choices = ENTITY_SCOPE_CHOICES,
         max_length=50,
         db_index=True,
         help_text= 'Entity Scope | Ámbito Entidad'

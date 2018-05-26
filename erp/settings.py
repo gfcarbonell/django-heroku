@@ -28,7 +28,6 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,7 +42,10 @@ INSTALLED_SYSTEM_APPS = [
     'auth_users.apps.AuthUsersConfig',
     'auth_user_profiles.apps.AuthUserProfilesConfig',
     #Emplooye Structure 
+    'employee_positions.apps.EmployeePositionsConfig',
+    'employee_types.apps.EmployeeTypesConfig',
     'employees.apps.EmployeesConfig',
+    'occupation_types.apps.OccupationTypesConfig',
     #Person Structure
     'persons.apps.PersonsConfig',
     'contact_information.apps.ContactInformationConfig',
